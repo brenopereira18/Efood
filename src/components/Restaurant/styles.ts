@@ -7,6 +7,8 @@ export const Card = styled.div`
   color: ${cores.laranja};
   border: 1px solid ${cores.laranja};
   position: relative;
+  margin-bottom: 48px;
+  background-color: #fff;
 
   p {
     padding: 0 8px 16px 8px;

@@ -3,25 +3,30 @@ import estrela from "../../assets/estrela.png";
 import * as S from "./styles";
 import Button from "../Button";
 
-const Restaurant = () => (
+type Props = {
+  title: string
+  description: string
+  image: string
+  evaluation: number
+  typeFood: string
+}
+
+const Restaurant = ({ title, description, image, evaluation, typeFood}: Props) => (
   <S.Card>
-    <S.Imagem src={restauranteJapones} alt="Restaurante Japonês" />
+    <S.Imagem src={image} alt="Restaurante Japonês" />
     <S.InfosTag>
       <Button type="tag">Destaque da semana</Button>
-      <Button type="tag">Japonesa</Button>
+      <Button type="tag">{typeFood}</Button>
     </S.InfosTag>
     <S.InfosContainer>
-      <h3>Hioki Sushi</h3>
+      <h3>{title}</h3>
       <div>
-        <span>4.9</span>
+        <span>{evaluation}</span>
         <img src={estrela} alt="estrela" />
       </div>
     </S.InfosContainer>
     <p>
-      Peça já o melhor da culinária japonesa no conforto da sua casa! Sushis
-      frescos, sashimis deliciosos e pratos quentes irresistíveis. Entrega
-      rápida, embalagens cuidadosas e qualidade garantida.Experimente o Japão
-      sem sair do lar com nosso delivery!
+      {description}
     </p>
     <Button type="link" children="Saiba mais" />
   </S.Card>

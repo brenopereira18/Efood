@@ -8,6 +8,7 @@ export const ButtonLink = styled.a`
   padding: 4px 6px;
   margin: 0 0 8px 8px;
   display: inline-block;
+  cursor: pointer;
 `;
 
 export const ButtonContainer = styled.span`
