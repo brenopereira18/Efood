@@ -6,12 +6,12 @@ type Props = {
   to?: string;
 };
 
-const Button = ({ type, children }: Props) => {
+const Button = ({ type, children, to }: Props) => {
   if (type === "tag") {
     return <ButtonContainer>{children}</ButtonContainer>;
   }
 
-  return <ButtonLink>{children}</ButtonLink>;
+  return <ButtonLink to={to as string}>{children}</ButtonLink>;
 };
 
 export default Button;

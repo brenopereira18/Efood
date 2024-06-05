@@ -68,7 +68,7 @@ const restaurantes: Restaurante[] = [
 
 const Home = () => (
   <>
-    <Header />
+    <Header thereIsABanner={false} />
     <RestaurantList restaurantes={restaurantes} />
   </>
 );
