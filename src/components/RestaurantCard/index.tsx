@@ -29,15 +29,22 @@ const RestaurantCard = ({
         <Button type="tag">{typeFood}</Button>
       )}
     </S.InfosTag>
-    <S.InfosContainer>
-      <h3>{title}</h3>
-      <div>
-        <span>{evaluation}</span>
-        <img src={estrela} alt="estrela" />
-      </div>
-    </S.InfosContainer>
-    <p>{description}</p>
-    <Button to="/restaurant" type="link" children="Saiba mais" />
+    <S.CartContent>
+      <S.InfosContainer>
+        <h3>{title}</h3>
+        <div>
+          <span>{evaluation}</span>
+          <img src={estrela} alt="estrela" />
+        </div>
+      </S.InfosContainer>
+      <p>{description}</p>
+      <Button
+        backgroundColor="laranja"
+        to="/restaurant"
+        type="link"
+        children="Saiba mais"
+      />
+    </S.CartContent>
   </S.Card>
 );
 
