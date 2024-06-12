@@ -1,7 +1,8 @@
 import logo from "../../assets/logo.png";
 import fundoHeader from "../../assets/fundoHeader.png";
-import { BannerContainer, Container, Logo, RestaurantHeader } from "./styles";
+import { Container, Logo, RestaurantHeader } from "./styles";
 import restauranteDeMassas from "../../assets/massas/massas.png";
+import Banner from "../Banner";
 
 type Props = {
   thereIsABanner: boolean;
@@ -18,14 +19,7 @@ const Header = ({ thereIsABanner }: Props) => {
             <p>0 produto(s) no carrinho</p>
           </div>
         </RestaurantHeader>
-        <BannerContainer
-          style={{ backgroundImage: `url(${restauranteDeMassas})` }}
-        >
-          <div className="container">
-            <p>Italiana</p>
-            <h4>La Dolce Vita Trattoria</h4>
-          </div>
-        </BannerContainer>
+        <Banner />
       </>
     );
   }

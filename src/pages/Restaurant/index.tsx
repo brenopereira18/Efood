@@ -4,9 +4,9 @@ import FoodList from "../../container/FoodList";
 
 const Restaurant = () => (
   <>
-    <Header thereIsABanner={true} />;
+    <Header thereIsABanner={true} />
     <FoodList />
   </>
-)
+);
 
 export default Restaurant;

@@ -1,10 +1,9 @@
 import RestaurantCard from "../../components/RestaurantCard";
-import Restaurant from "../../components/RestaurantCard";
-import Restaurante from "../../models/restaurantes/Restaurante";
+import { Restaurant } from "../../pages/Home";
 import { ContainerCard, SectionRestaurants } from "./styles";
 
 type Props = {
-  restaurantes: Restaurante[];
+  restaurantes: Restaurant[];
 };
 
 const RestaurantList = ({ restaurantes }: Props) => (
@@ -13,12 +12,12 @@ const RestaurantList = ({ restaurantes }: Props) => (
       <ContainerCard>
         {restaurantes.map((restaurante) => (
           <RestaurantCard
-            key={restaurante.title}
-            title={restaurante.title}
-            image={restaurante.image}
-            description={restaurante.description}
-            evaluation={restaurante.evaluation}
-            typeFood={restaurante.typeFood}
+            key={restaurante.id}
+            title={restaurante.titulo}
+            image={restaurante.capa}
+            description={restaurante.descricao}
+            evaluation={restaurante.avaliacao}
+            typeFood={restaurante.tipo}
           />
         ))}
       </ContainerCard>

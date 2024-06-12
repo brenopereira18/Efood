@@ -42,8 +42,9 @@ export const InfosTag = styled.div`
 `;
 
 export const Imagem = styled.img`
-  width: 472px;
+  width: 100%;
   height: 217px;
+  object-fit: cover;
 `;
 
 export const InfosContainer = styled.div`
