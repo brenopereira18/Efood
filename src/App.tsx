@@ -2,12 +2,12 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Footer from "./container/Footer";
 import Home from "./pages/Home";
 import { GlobalCss } from "./styles";
-import Restaurant from "./pages/Restaurant";
+import Restaurante from "./pages/Restaurante";
 
 const Rotas = () => (
   <Routes>
     <Route path="/" element={<Home />}/>
-    <Route path="/restaurant" element={<Restaurant />} />
+    <Route path="/restaurant/:id" element={<Restaurante />} />
   </Routes>
 )
 

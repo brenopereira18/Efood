@@ -6,9 +6,11 @@ export const SectionRestaurants = styled.section`
   padding: 80px 0;  
 `;
 
-export const ContainerCard = styled.div`
+export const ContainerCard = styled.ul`
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: 80px;
+  text-decoration: none;
+  list-style: none;
 `
 

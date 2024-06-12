@@ -2,17 +2,17 @@ import Button from "../Button";
 import { Card } from "./styles";
 
 type Props = {
-  title: string;
-  description: string;
-  image: string;
+  nome: string;
+  descricao: string;
+  imagem: string;
 };
 
-const FoodCard = ({ title, description, image }: Props) => (
+const FoodCard = ({ nome, descricao, imagem }: Props) => (
   <Card>
-    <img src={image} />
+    <img src={imagem} />
     <div>
-      <h6>{title}</h6>
-      <p>{description}</p>
+      <h6>{nome}</h6>
+      <p>{descricao}</p>
       <Button type="link" size="big" backgroundColor="begeClaro">
         Adicionar ao carrinho
       </Button>

@@ -4,7 +4,7 @@ import { ButtonLink } from "../Button/styles";
 
 export const Card = styled.div`
   width: 320px;
-  height: 338px;
+  height: 100%;
   background-color: ${cores.laranja};
   color: ${cores.begeClaro};
   padding: 8px;
@@ -14,6 +14,7 @@ export const Card = styled.div`
   img {
     width: 304px;
     height: 167px;
+    object-fit: cover;
   }
 
   div {

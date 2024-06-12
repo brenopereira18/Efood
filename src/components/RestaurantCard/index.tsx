@@ -8,6 +8,8 @@ type Props = {
   image: string;
   evaluation: number;
   typeFood: string;
+  id: number;
+  destacado: boolean
 };
 
 const RestaurantCard = ({
@@ -16,11 +18,13 @@ const RestaurantCard = ({
   image,
   evaluation,
   typeFood,
+  id,
+  destacado
 }: Props) => (
   <S.Card>
     <S.Imagem src={image} alt="Restaurante Japonês" />
     <S.InfosTag>
-      {typeFood === "Japonesa" ? (
+      {(destacado) ? (
         <>
           <Button type="tag">Destaque da semana</Button>
           <Button type="tag">{typeFood}</Button>
@@ -40,7 +44,7 @@ const RestaurantCard = ({
       <p>{description}</p>
       <Button
         backgroundColor="laranja"
-        to="/restaurant"
+        to={`/restaurant/${id}`}
         type="link"
         children="Saiba mais"
       />

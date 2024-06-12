@@ -1,8 +1,7 @@
 import logo from "../../assets/logo.png";
 import fundoHeader from "../../assets/fundoHeader.png";
 import { Container, Logo, RestaurantHeader } from "./styles";
-import restauranteDeMassas from "../../assets/massas/massas.png";
-import Banner from "../Banner";
+import { Link } from "react-router-dom";
 
 type Props = {
   thereIsABanner: boolean;
@@ -15,11 +14,12 @@ const Header = ({ thereIsABanner }: Props) => {
         <RestaurantHeader style={{ backgroundImage: `url(${fundoHeader})` }}>
           <div className="container">
             <p>Restaurantes</p>
-            <Logo src={logo} alt="Efood" />
+            <Link to="/">
+              <Logo src={logo} alt="Efood" />
+            </Link>
             <p>0 produto(s) no carrinho</p>
           </div>
         </RestaurantHeader>
-        <Banner />
       </>
     );
   }

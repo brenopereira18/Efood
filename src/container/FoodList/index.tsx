@@ -5,6 +5,9 @@ import nhoque from "../../assets/massas/nhoque.jpg";
 import pizzaMarguerita from "../../assets/massas/pizzaMarguerita.png";
 import pizzaQueijo from "../../assets/massas/pizzaQueijo.jpg";
 import { CardContainer, SectionFoods } from "./styles";
+import { Restaurant } from "../../pages/Home";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 const foods = [
   {
@@ -39,20 +42,26 @@ const foods = [
   },
 ];
 
-const FoodList = () => (
-  <SectionFoods>
-    <div className="container">
-      <CardContainer>
-        {foods.map((food) => (
-          <FoodCard
-            title={food.title}
-            image={food.image}
-            description={food.description}
-          />
-        ))}
-      </CardContainer>
-    </div>
-  </SectionFoods>
-);
+type Props = {
+  restaurante: Restaurant;
+};
+
+const FoodList = ({ restaurante }: Props) => {
+  return (
+    <SectionFoods>
+      <div className="container">
+        <CardContainer>
+          {restaurante.cardapio.map((rest) => (
+            <FoodCard
+              nome={rest.nome}
+              imagem={rest.foto}
+              descricao={rest.descricao}
+            />
+          ))}
+        </CardContainer>
+      </div>
+    </SectionFoods>
+  );
+};
 
 export default FoodList;
