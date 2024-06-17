@@ -20,7 +20,7 @@ export const BannerContainer = styled.div`
 
   div {
     position: relative;
-    z-index: 2;
+    z-index: 1;
     color: white;
     font-size: 32px;
     padding: 24px 0;

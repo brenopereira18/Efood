@@ -2,7 +2,7 @@ import { ButtonContainer, ButtonLink } from "./styles";
 
 export type Props = {
   type: "tag" | "link";
-  children: string;
+  children: any;
   to?: string;
   size?: "small" | "big";
   backgroundColor?: "laranja" | "begeClaro";

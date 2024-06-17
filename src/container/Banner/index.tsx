@@ -1,5 +1,4 @@
 import { BannerContainer } from "./styles";
-import { useEffect, useState } from "react";
 import { Restaurant } from "../../pages/Home";
 
 type Props = {

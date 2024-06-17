@@ -1,5 +1,6 @@
 import { styled } from "styled-components";
 import { cores } from "../../styles";
+import { ButtonLink } from "../../components/Button/styles";
 
 export const SectionFoods = styled.div`
   background-color: ${cores.begeClaro};
@@ -11,3 +12,5 @@ export const CardContainer = styled.div`
   grid-template-columns: 1fr 1fr 1fr;
   gap: 32px;
 `;
+
+

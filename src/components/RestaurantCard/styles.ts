@@ -4,13 +4,15 @@ import { ButtonContainer, ButtonLink } from "../Button/styles";
 
 export const Card = styled.div`
   width: 472px;
+  max-height: 390px;
+  height: 100%;
   color: ${cores.laranja};
   border: 1px solid ${cores.laranja};
   position: relative;
   margin-bottom: 48px;
   background-color: #fff;
   display: flex;
-  flex-direction: column;
+  flex-direction: column;  
 
   p {
     padding-bottom: 16px;

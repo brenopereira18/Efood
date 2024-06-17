@@ -9,18 +9,18 @@ export const Card = styled.div`
   color: ${cores.begeClaro};
   padding: 8px;
   display: flex;
-  flex-direction: column;  
+  flex-direction: column;
 
   img {
     width: 304px;
     height: 167px;
-    object-fit: cover;
+    cursor: pointer;
   }
 
   div {
     display: flex;
     flex-direction: column;
-    flex-grow: 1;   
+    flex-grow: 1;
   }
 
   h6 {
@@ -34,8 +34,76 @@ export const Card = styled.div`
     margin-bottom: 8px;
   }
 
-  ${ButtonLink} {   
-    margin: 0; 
-    margin-top: auto;      
+  ${ButtonLink} {
+    margin: 0;
+    margin-top: auto;
+  }
+`;
+
+export const Modal = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1;
+  display: none;
+
+  &.visivel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+`;
+
+export const ModalContainer = styled.div`
+  position: relative;
+  z-index: 1;
+  max-width: 1024px;
+  width: 100%;
+  height: 344px;
+  padding: 32px;
+  color: #fff;
+  background-color: ${cores.laranja};
+  gap: 24px;
+
+  img {
+    width: 280px;
+    height: 280px;
+    object-fit: cover;
+  }
+`;
+
+export const Fechar = styled.div`
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 8px;
+
+  img {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+  }
+`;
+
+export const ModalContent = styled.div`
+  display: flex;
+  gap: 24px;
+
+  h4 {
+    margin-bottom: 16px;
+  }
+
+  p {
+    margin-bottom: 16px;
+    font-size: 14px;
+  }
+
+  ${ButtonLink} {
+    margin: 0;
   }
 `;
