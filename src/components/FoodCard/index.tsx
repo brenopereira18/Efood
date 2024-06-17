@@ -11,6 +11,13 @@ type Props = {
   preco: number;
 };
 
+export const formataPreco = (preco = 0) => {
+  return new Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  }).format(preco);
+};
+
 const FoodCard = ({ nome, descricao, imagem, porcao, preco }: Props) => {
   const [modal, setModal] = useState(false);
 
@@ -29,7 +36,7 @@ const FoodCard = ({ nome, descricao, imagem, porcao, preco }: Props) => {
       <Modal className={modal ? "visivel" : ""}>
         <ModalContainer>
           <Fechar>
-            <img src={fechar} onClick={() => setModal(false)}/>
+            <img src={fechar} onClick={() => setModal(false)} />
           </Fechar>
           <ModalContent>
             <img src={imagem} />
@@ -38,7 +45,7 @@ const FoodCard = ({ nome, descricao, imagem, porcao, preco }: Props) => {
               <p>{descricao}</p>
               <p>Serve: {porcao}</p>
               <Button type="link" backgroundColor="begeClaro" size="small">
-                Adicionar ao carrinho - R$ {preco}
+                Adicionar ao carrinho - {formataPreco(preco)}
               </Button>
             </div>
           </ModalContent>
