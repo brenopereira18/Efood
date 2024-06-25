@@ -2,8 +2,6 @@ import FoodCard from "../../components/FoodCard";
 import { CardContainer, SectionFoods } from "./styles";
 import { Restaurant } from "../../pages/Home";
 
-
-
 type Props = {
   restaurante: Restaurant;
 };

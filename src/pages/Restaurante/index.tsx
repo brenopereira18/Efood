@@ -2,19 +2,12 @@ import Header from "../../container/Header";
 
 import FoodList from "../../container/FoodList";
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { Restaurant } from "../Home";
 import Banner from "../../container/Banner";
+import { useGetFoodQuery } from "../../services/api";
 
 const Restaurante = () => {
   const { id } = useParams();
-  const [restaurante, setRestaurante] = useState<Restaurant>();
-
-  useEffect(() => {
-    fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
-      .then((answer) => answer.json())
-      .then((answer) => setRestaurante(answer));
-  }, [id]);
+  const { data: restaurante } = useGetFoodQuery(id!);
 
   if (!restaurante) {
     return <h3>Carregando...</h3>;
@@ -23,8 +16,8 @@ const Restaurante = () => {
   return (
     <>
       <Header thereIsABanner={true} />
-      <Banner restaurante={restaurante}/>
-      <FoodList restaurante={restaurante}/>
+      <Banner restaurante={restaurante} />
+      <FoodList restaurante={restaurante} />
     </>
   );
 };
