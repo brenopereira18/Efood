@@ -5,6 +5,7 @@ import { GlobalCss } from "./styles";
 import Restaurante from "./pages/Restaurante";
 import { Provider } from "react-redux";
 import { store } from "./store";
+import Carrinho from "./container/Carrinho";
 
 const Rotas = () => (
   <Routes>
@@ -19,7 +20,8 @@ function App() {
       <BrowserRouter>
         <GlobalCss />
         <Rotas />
-        <Footer />
+        <Footer />  
+        <Carrinho />      
       </BrowserRouter>
     </Provider>
   );

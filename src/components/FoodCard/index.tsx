@@ -29,7 +29,7 @@ const FoodCard = ({ nome, descricao, imagem, porcao, preco }: Props) => {
           <h6>{nome}</h6>
           <p>{descricao}</p>
           <Button type="link" size="big" backgroundColor="begeClaro">
-            Adicionar ao carrinho
+            Mais detalhes
           </Button>
         </div>
       </Card>

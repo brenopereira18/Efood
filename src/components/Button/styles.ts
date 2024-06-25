@@ -14,6 +14,7 @@ export const ButtonLink = styled(Link)<Omit<Props, 'type'>>`
   text-decoration: none;
   font-size: 14px;
   font-weight: bold;
+  text-align: center;
 `;
 
 export const ButtonContainer = styled.span`
