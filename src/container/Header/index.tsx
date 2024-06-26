@@ -2,12 +2,16 @@ import logo from "../../assets/logo.png";
 import fundoHeader from "../../assets/fundoHeader.png";
 import { Container, Logo, RestaurantHeader } from "./styles";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { RootReducer } from "../../store";
 
 type Props = {
   thereIsABanner: boolean;
 };
 
 const Header = ({ thereIsABanner }: Props) => {
+  const { items } = useSelector((state: RootReducer) => state.cart);
+
   if (thereIsABanner) {
     return (
       <>
@@ -17,7 +21,7 @@ const Header = ({ thereIsABanner }: Props) => {
             <Link to="/">
               <Logo src={logo} alt="Efood" />
             </Link>
-            <p>0 produto(s) no carrinho</p>
+            <p>{items.length} produto(s) no carrinho</p>
           </div>
         </RestaurantHeader>
       </>

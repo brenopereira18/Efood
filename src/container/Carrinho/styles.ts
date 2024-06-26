@@ -8,9 +8,13 @@ export const CartContainer = styled.div`
   top: 0;
   left: 0;
   position: fixed;
-  display: flex;
+  display: none;
   justify-content: flex-end;
   z-index: 1;
+
+  &.is-open {
+    display: flex;
+  }
 `;
 
 export const Overlay = styled.div`
@@ -49,6 +53,7 @@ export const CartItem = styled.div`
     height: 80px;
     margin-right: 8px;
     margin-bottom: 12px;
+    object-fit: cover;
   }
 
   h3 {

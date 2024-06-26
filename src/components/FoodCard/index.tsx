@@ -2,14 +2,9 @@ import Button from "../Button";
 import { Card, Fechar, Modal, ModalContainer, ModalContent } from "./styles";
 import fechar from "../../assets/fechar.png";
 import { useState } from "react";
-
-type Props = {
-  nome: string;
-  descricao: string;
-  imagem: string;
-  porcao: string;
-  preco: number;
-};
+import { useDispatch } from "react-redux";
+import { CartOpen, add } from "../../store/reducers/cart";
+import { menuItem } from "../../pages/Home";
 
 export const formataPreco = (preco = 0) => {
   return new Intl.NumberFormat("pt-BR", {
@@ -18,13 +13,28 @@ export const formataPreco = (preco = 0) => {
   }).format(preco);
 };
 
-const FoodCard = ({ nome, descricao, imagem, porcao, preco }: Props) => {
+const FoodCard = ({ nome, descricao, foto, porcao, preco, id }: menuItem) => {
+  const dispatch = useDispatch();  
+
+  const open = () => {
+    dispatch(CartOpen());
+  };
+
+  const addCart = () => {
+    dispatch(add({nome, descricao, foto, porcao, preco, id}))     
+  }
+
+  const handleClick = () => {
+    open()
+    addCart()
+  }
+
   const [modal, setModal] = useState(false);
 
   return (
     <>
-      <Card onClick={() => setModal(true)}>
-        <img src={imagem} />
+      <Card key={id} onClick={() => setModal(true)}>
+        <img src={foto} />
         <div>
           <h6>{nome}</h6>
           <p>{descricao}</p>
@@ -39,14 +49,16 @@ const FoodCard = ({ nome, descricao, imagem, porcao, preco }: Props) => {
             <img src={fechar} onClick={() => setModal(false)} />
           </Fechar>
           <ModalContent>
-            <img src={imagem} />
+            <img src={foto} />
             <div>
               <h4>{nome}</h4>
               <p>{descricao}</p>
               <p>Serve: {porcao}</p>
-              <Button type="link" backgroundColor="begeClaro" size="small">
-                Adicionar ao carrinho - {formataPreco(preco)}
-              </Button>
+              <div onClick={handleClick}>
+                <Button type="link" backgroundColor="begeClaro" size="small">
+                  Adicionar ao carrinho - {formataPreco(preco)}
+                </Button>
+              </div>
             </div>
           </ModalContent>
         </ModalContainer>
