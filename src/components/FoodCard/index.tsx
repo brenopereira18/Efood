@@ -14,20 +14,21 @@ export const formataPreco = (preco = 0) => {
 };
 
 const FoodCard = ({ nome, descricao, foto, porcao, preco, id }: menuItem) => {
-  const dispatch = useDispatch();  
+  const dispatch = useDispatch();
 
   const open = () => {
     dispatch(CartOpen());
   };
 
   const addCart = () => {
-    dispatch(add({nome, descricao, foto, porcao, preco, id}))     
-  }
+    dispatch(add({ nome, descricao, foto, porcao, preco, id }));
+  };
 
   const handleClick = () => {
-    open()
-    addCart()
-  }
+    open();
+    addCart();
+    setModal(false);
+  };
 
   const [modal, setModal] = useState(false);
 

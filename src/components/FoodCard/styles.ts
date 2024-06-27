@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { cores } from "../../styles";
+import { cores, dispositivo } from "../../styles";
 import { ButtonLink } from "../Button/styles";
 
 export const Card = styled.div`
@@ -68,10 +68,12 @@ export const ModalContainer = styled.div`
   background-color: ${cores.laranja};
   gap: 24px;
 
-  img {
-    width: 280px;
-    height: 280px;
-    object-fit: cover;
+  @media (max-width: ${dispositivo.tablet}) {
+    max-width: 90%;
+  }
+
+  @media (max-width: ${dispositivo.mobile}) {
+    height: 460px;    
   }
 `;
 
@@ -93,6 +95,22 @@ export const Fechar = styled.div`
 export const ModalContent = styled.div`
   display: flex;
   gap: 24px;
+
+  @media (max-width: ${dispositivo.mobile}) {
+    flex-direction: column;    
+  }
+
+  img {
+    width: 280px;
+    height: 280px;
+    object-fit: cover;
+
+    @media (max-width: ${dispositivo.mobile}) {
+      height: 160px;
+      width: 300px;  
+    }
+  }
+  
 
   h4 {
     margin-bottom: 16px;

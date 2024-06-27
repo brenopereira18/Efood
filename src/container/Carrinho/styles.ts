@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { cores } from "../../styles";
+import { cores, dispositivo } from "../../styles";
 import { ButtonLink } from "../../components/Button/styles";
 
 export const CartContainer = styled.div`
@@ -32,6 +32,10 @@ export const SideBar = styled.div`
   z-index: 1;
   padding: 32px 8px 8px 8px;
 
+  @media (max-width: ${dispositivo.mobile}) {
+    width: 320px;    
+  }
+
   ${ButtonLink} {
     width: 100%;
     margin: 0;
@@ -40,7 +44,8 @@ export const SideBar = styled.div`
 
 export const CartItem = styled.div`
   position: relative;
-  width: 344px;
+  max-width: 344px;
+  width: 100%;
   height: 100px;
   background-color: ${cores.bege};
   color: ${cores.laranja};

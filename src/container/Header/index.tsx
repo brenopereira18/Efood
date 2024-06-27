@@ -1,9 +1,10 @@
 import logo from "../../assets/logo.png";
 import fundoHeader from "../../assets/fundoHeader.png";
-import { Container, Logo, RestaurantHeader } from "./styles";
+import { Carrinho, Container, Logo, RestaurantHeader } from "./styles";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootReducer } from "../../store";
+import { CartOpen } from "../../store/reducers/cart";
 
 type Props = {
   thereIsABanner: boolean;
@@ -11,6 +12,11 @@ type Props = {
 
 const Header = ({ thereIsABanner }: Props) => {
   const { items } = useSelector((state: RootReducer) => state.cart);
+  const dispatch = useDispatch();
+
+  const open = () => {
+    dispatch(CartOpen());
+  };
 
   if (thereIsABanner) {
     return (
@@ -21,7 +27,7 @@ const Header = ({ thereIsABanner }: Props) => {
             <Link to="/">
               <Logo src={logo} alt="Efood" />
             </Link>
-            <p>{items.length} produto(s) no carrinho</p>
+            <Carrinho onClick={open}>{items.length} produto(s) no carrinho</Carrinho>
           </div>
         </RestaurantHeader>
       </>

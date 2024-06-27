@@ -1,10 +1,15 @@
 import { createGlobalStyle } from "styled-components";
 
 export const cores = {
-  bege: '#FFEBD9',
-  begeClaro: '#FFF8F2',
-  laranja: '#E66767',   
-}
+  bege: "#FFEBD9",
+  begeClaro: "#FFF8F2",
+  laranja: "#E66767",
+};
+
+export const dispositivo = {
+  tablet: "1023px",
+  mobile: "767px",
+};
 
 export const GlobalCss = createGlobalStyle`
     * {
@@ -19,5 +24,9 @@ export const GlobalCss = createGlobalStyle`
       max-width: 1024px;
       width: 100%;
       margin: 0 auto;
+
+      @media (max-width: ${dispositivo.tablet}) {
+        max-width: 90%;
+      }     
     }
 `;

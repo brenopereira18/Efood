@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { cores } from "../../styles";
+import { cores, dispositivo } from "../../styles";
 import { ButtonContainer, ButtonLink } from "../Button/styles";
 
 export const Card = styled.div`
@@ -17,6 +17,11 @@ export const Card = styled.div`
   p {
     padding-bottom: 16px;
     font-size: 14px;
+  }
+
+  @media (max-width: ${dispositivo.tablet}) {
+    width: 340px;
+    max-height: 420px;     
   }
 `;
 

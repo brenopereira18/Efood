@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { cores } from "../../styles";
+import { cores, dispositivo } from "../../styles";
 
 export const SectionRestaurants = styled.section`
   background-color: ${cores.begeClaro};
@@ -12,5 +12,14 @@ export const ContainerCard = styled.ul`
   column-gap: 80px;
   text-decoration: none;
   list-style: none;
+
+  @media (max-width: ${dispositivo.tablet}) {
+    column-gap: 40px;      
+  }
+
+  @media (max-width: ${dispositivo.mobile}) {
+    grid-template-columns: 1fr; 
+    justify-items: center;     
+  }
 `
 
