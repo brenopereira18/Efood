@@ -40,18 +40,13 @@ const Carrinho = () => {
       <SideBar>
         {continueOrdering ? (
           <Checkout>
-            <>
-              <Button type="link" backgroundColor="begeClaro">
-                Continuar com o pagamento
-              </Button>
-              <Button
-                type="link"
-                backgroundColor="begeClaro"
-                onClick={() => setContinueOrdering(false)}
-              >
-                Voltar para o carrinho
-              </Button>
-            </>
+            <Button
+              type="link"
+              backgroundColor="begeClaro"
+              onClick={() => setContinueOrdering(false)}
+            >
+              Voltar para o carrinho
+            </Button>
           </Checkout>
         ) : (
           <>
