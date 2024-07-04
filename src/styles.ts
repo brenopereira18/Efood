@@ -4,6 +4,7 @@ export const cores = {
   bege: "#FFEBD9",
   begeClaro: "#FFF8F2",
   laranja: "#E66767",
+  gray: "#4B4B4B",
 };
 
 export const dispositivo = {

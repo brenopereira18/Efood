@@ -6,6 +6,7 @@ export type Props = {
   to?: string;
   size?: "small" | "big";
   backgroundColor?: "laranja" | "begeClaro";
+  onClick?: () => void;
 };
 
 const Button = ({
@@ -14,13 +15,19 @@ const Button = ({
   to,
   size = "small",
   backgroundColor = "laranja",
+  onClick,
 }: Props) => {
   if (type === "tag") {
     return <ButtonContainer>{children}</ButtonContainer>;
   }
 
   return (
-    <ButtonLink size={size} backgroundColor={backgroundColor} to={to as string}>
+    <ButtonLink
+      onClick={onClick}
+      size={size}
+      backgroundColor={backgroundColor}
+      to={to as string}
+    >
       {children}
     </ButtonLink>
   );
