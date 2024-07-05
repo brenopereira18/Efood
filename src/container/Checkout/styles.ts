@@ -53,3 +53,14 @@ export const Form = styled.form`
     }
   }
 `;
+
+export const FinalizedPayment = styled.div`
+  h4 {
+    margin-bottom: 16px;
+  }
+
+  p {
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+`;
