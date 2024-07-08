@@ -3,8 +3,9 @@ import Button from "../../components/Button";
 import * as S from "./styles";
 import { useFormik } from "formik";
 import { usePurchaseMutation } from "../../services/api";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootReducer } from "../../store";
+import { CartClose, clear } from "../../store/reducers/cart";
 
 type Props = {
   children: JSX.Element;
@@ -14,6 +15,7 @@ const Checkout = ({ children }: Props) => {
   const [payment, setPayment] = useState(false);
   const [purchase, { isSuccess, data }] = usePurchaseMutation();
   const { items } = useSelector((state: RootReducer) => state.cart);
+  const dispatch = useDispatch();
 
   const form = useFormik({
     initialValues: {
@@ -60,6 +62,11 @@ const Checkout = ({ children }: Props) => {
     },
   });
 
+  const close = () => {
+    dispatch(CartClose());
+    dispatch(clear());
+  };
+
   return (
     <div>
       <S.Container>
@@ -83,7 +90,14 @@ const Checkout = ({ children }: Props) => {
               Esperamos que desfrute de uma deliciosa e agradável experiência
               gastronômica. Bom apetite!
             </p>
-            <Button type="link" backgroundColor="begeClaro">Concluir</Button>
+            <Button
+              type="link"
+              backgroundColor="begeClaro"
+              to="/"
+              onClick={close}
+            >
+              Concluir
+            </Button>
           </S.FinalizedPayment>
         ) : (
           <S.Form onSubmit={form.handleSubmit}>
@@ -144,26 +158,26 @@ const Checkout = ({ children }: Props) => {
                     />
                   </div>
                 </div>
-
-                <Button
-                  type="link"
-                  backgroundColor="begeClaro"
-                  onClick={form.handleSubmit}
-                >
-                  Finalizar pagamento
-                </Button>
-                <Button
-                  type="link"
-                  backgroundColor="begeClaro"
-                  onClick={() => setPayment(false)}
-                >
-                  Voltar para a edição de endereço
-                </Button>
+                <div className="buttonContainer">
+                  <Button
+                    type="link"
+                    backgroundColor="begeClaro"
+                    onClick={form.handleSubmit}
+                  >
+                    Finalizar pagamento
+                  </Button>
+                  <Button
+                    type="link"
+                    backgroundColor="begeClaro"
+                    onClick={() => setPayment(false)}
+                  >
+                    Voltar para a edição de endereço
+                  </Button>
+                </div>
               </>
             ) : (
               <>
                 <h4>Entrega</h4>
-
                 <div>
                   <label htmlFor="clientName">Quem irá receber</label>
                   <input
@@ -226,14 +240,16 @@ const Checkout = ({ children }: Props) => {
                     onChange={form.handleChange}
                   />
                 </div>
-                <Button
-                  type="link"
-                  backgroundColor="begeClaro"
-                  onClick={() => setPayment(true)}
-                >
-                  Continuar com o pagamento
-                </Button>
-                {children}
+                <div className="buttonContainer">
+                  <Button
+                    type="link"
+                    backgroundColor="begeClaro"
+                    onClick={() => setPayment(true)}
+                  >
+                    Continuar com o pagamento
+                  </Button>
+                  {children}
+                </div>
               </>
             )}
           </S.Form>

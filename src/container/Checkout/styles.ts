@@ -8,6 +8,7 @@ export const Container = styled.div`
   h4 {
     font-size: 16px;
     line-height: 18px;
+    margin-bottom: 16px;
   }
 
   ${ButtonLink} {
@@ -16,9 +17,6 @@ export const Container = styled.div`
 `;
 
 export const Form = styled.form`
-  margin-top: 16px;
-  margin-bottom: 24px;
-
   div {
     display: flex;
     flex-direction: column;
@@ -40,6 +38,9 @@ export const Form = styled.form`
       font-weight: bold;
       color: ${cores.gray};
     }
+  }
+  .buttonContainer {
+    margin-top: 24px;
   }
 
   .addresContainer {

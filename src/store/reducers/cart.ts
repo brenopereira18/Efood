@@ -27,14 +27,17 @@ const cartSlice = createSlice({
       if (!food) {
         state.items.push(action.payload);
       } else {
-        alert('Este produto já está no carrinho')
+        alert("Este produto já está no carrinho");
       }
     },
     remove: (state, action: PayloadAction<number>) => {
       state.items = state.items.filter((item) => item.id !== action.payload);
     },
+    clear: (state) => {
+      state.items = [];
+    },
   },
 });
 
-export const { CartOpen, CartClose, add, remove } = cartSlice.actions;
+export const { CartOpen, CartClose, add, remove, clear } = cartSlice.actions;
 export default cartSlice.reducer;
