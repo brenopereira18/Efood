@@ -5,13 +5,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { CartOpen, add } from "../../store/reducers/cart";
 import { menuItem } from "../../pages/Home";
-
-export const formataPreco = (preco = 0) => {
-  return new Intl.NumberFormat("pt-BR", {
-    style: "currency",
-    currency: "BRL",
-  }).format(preco);
-};
+import { formataPreco } from "../../utils";
 
 const FoodCard = ({ nome, descricao, foto, porcao, preco, id }: menuItem) => {
   const dispatch = useDispatch();

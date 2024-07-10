@@ -11,7 +11,7 @@ import Button from "../../components/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { RootReducer } from "../../store";
 import { CartClose, remove } from "../../store/reducers/cart";
-import { formataPreco } from "../../components/FoodCard";
+import { formataPreco, totalPrice } from "../../utils/index";
 import { useState } from "react";
 import Checkout from "../Checkout";
 
@@ -28,11 +28,7 @@ const Carrinho = () => {
     dispatch(remove(id));
   };
 
-  const totalPrice = () => {
-    return items.reduce((acumulador, valorAtual) => {
-      return (acumulador += valorAtual.preco);
-    }, 0);
-  };
+  
 
   return (
     <CartContainer className={isOpen ? "is-open" : ""}>
@@ -67,7 +63,7 @@ const Carrinho = () => {
             </ul>
             <TotalPrice>
               <p>Valor total</p>
-              <p>{formataPreco(totalPrice())}</p>
+              <p>{formataPreco(totalPrice(items))}</p>
             </TotalPrice>
             <Button
               type="link"

@@ -8,7 +8,7 @@ import { RootReducer } from "../../store";
 import { CartClose, clear } from "../../store/reducers/cart";
 import * as Yup from "yup";
 import InputMask from "react-input-mask";
-import { miniSerializeError } from "@reduxjs/toolkit";
+import { formataPreco, totalPrice } from "../../utils";
 
 type Props = {
   children: JSX.Element;
@@ -46,7 +46,10 @@ const Checkout = ({ children }: Props) => {
         .matches(/^\d{2}$/, "O campo deve ter dois caracteres")
         .required("O campo é obrigatório"),
       expiresYear: Yup.string()
-        .matches(/^\d{2}$/, "O campo deve conter os dois últimos caracteres no ano em que o cartão expira")
+        .matches(
+          /^\d{2}$/,
+          "O campo deve conter os dois últimos caracteres no ano em que o cartão expira"
+        )
         .required("O campo é obrigatório"),
       clientName: Yup.string().min(
         4,
@@ -142,8 +145,11 @@ const Checkout = ({ children }: Props) => {
           <S.Form onSubmit={form.handleSubmit}>
             {payment ? (
               <>
-                <h4>Pagamento - Valor a pagar R$ 100,00</h4>
-                <div>
+                <h4>
+                  Pagamento - Valor a pagar{" "}
+                  <span>{formataPreco(totalPrice(items))}</span>
+                </h4>
+                <S.ContainerField>
                   <label htmlFor="cardDisplayName">Nome no cartão</label>
                   <input
                     type="text"
@@ -156,9 +162,9 @@ const Checkout = ({ children }: Props) => {
                       checkInputHasError("cardDisplayName") ? "error" : ""
                     }
                   />
-                </div>
+                </S.ContainerField>
                 <div className="addresContainer">
-                  <div>
+                  <S.ContainerField maxWidth="228px">
                     <label htmlFor="cardNumber">Número do cartão</label>
                     <InputMask
                       type="text"
@@ -172,8 +178,8 @@ const Checkout = ({ children }: Props) => {
                         checkInputHasError("cardNumber") ? "error" : ""
                       }
                     />
-                  </div>
-                  <div>
+                  </S.ContainerField>
+                  <S.ContainerField maxWidth="87px">
                     <label htmlFor="cardCode">CVV</label>
                     <InputMask
                       type="text"
@@ -185,10 +191,10 @@ const Checkout = ({ children }: Props) => {
                       onBlur={form.handleBlur}
                       className={checkInputHasError("cardCode") ? "error" : ""}
                     />
-                  </div>
+                  </S.ContainerField>
                 </div>
                 <div className="addresContainer">
-                  <div>
+                  <S.ContainerField>
                     <label htmlFor="expiresMonth">Mês de vencimento</label>
                     <InputMask
                       type="text"
@@ -202,8 +208,8 @@ const Checkout = ({ children }: Props) => {
                         checkInputHasError("expiresMonth") ? "error" : ""
                       }
                     />
-                  </div>
-                  <div>
+                  </S.ContainerField>
+                  <S.ContainerField>
                     <label htmlFor="expiresYear">Ano de vencimento</label>
                     <InputMask
                       type="text"
@@ -217,7 +223,7 @@ const Checkout = ({ children }: Props) => {
                         checkInputHasError("expiresYear") ? "error" : ""
                       }
                     />
-                  </div>
+                  </S.ContainerField>
                 </div>
                 <div className="buttonContainer">
                   <Button
@@ -239,7 +245,7 @@ const Checkout = ({ children }: Props) => {
             ) : (
               <>
                 <h4>Entrega</h4>
-                <div>
+                <S.ContainerField>
                   <label htmlFor="clientName">Quem irá receber</label>
                   <input
                     type="text"
@@ -250,8 +256,8 @@ const Checkout = ({ children }: Props) => {
                     onBlur={form.handleBlur}
                     className={checkInputHasError("clientName") ? "error" : ""}
                   />
-                </div>
-                <div>
+                </S.ContainerField>
+                <S.ContainerField>
                   <label htmlFor="address">Endereço</label>
                   <input
                     type="text"
@@ -262,8 +268,8 @@ const Checkout = ({ children }: Props) => {
                     onBlur={form.handleBlur}
                     className={checkInputHasError("address") ? "error" : ""}
                   />
-                </div>
-                <div>
+                </S.ContainerField>
+                <S.ContainerField>
                   <label htmlFor="city">Cidade</label>
                   <input
                     type="text"
@@ -274,9 +280,9 @@ const Checkout = ({ children }: Props) => {
                     onBlur={form.handleBlur}
                     className={checkInputHasError("city") ? "error" : ""}
                   />
-                </div>
+                </S.ContainerField>
                 <div className="addresContainer">
-                  <div>
+                  <S.ContainerField>
                     <label htmlFor="zipCode">CEP</label>
                     <InputMask
                       type="text"
@@ -288,8 +294,8 @@ const Checkout = ({ children }: Props) => {
                       mask="99999-999"
                       className={checkInputHasError("zipCode") ? "error" : ""}
                     />
-                  </div>
-                  <div>
+                  </S.ContainerField>
+                  <S.ContainerField>
                     <label htmlFor="houseNumber">Número</label>
                     <input
                       type="number"
@@ -302,9 +308,9 @@ const Checkout = ({ children }: Props) => {
                         checkInputHasError("houseNumber") ? "error" : ""
                       }
                     />
-                  </div>
+                  </S.ContainerField>
                 </div>
-                <div>
+                <S.ContainerField>
                   <label htmlFor="complement">Complemento (opcional)</label>
                   <input
                     type="text"
@@ -314,7 +320,7 @@ const Checkout = ({ children }: Props) => {
                     onChange={form.handleChange}
                     onBlur={form.handleBlur}
                   />
-                </div>
+                </S.ContainerField>
                 <div className="buttonContainer">
                   <Button
                     type="link"
