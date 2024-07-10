@@ -37,6 +37,10 @@ export const Form = styled.form`
       font-size: 14px;
       font-weight: bold;
       color: ${cores.gray};
+
+      &.error {
+        border: 2px solid red;
+      }
     }
   }
   .buttonContainer {

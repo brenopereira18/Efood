@@ -6,6 +6,9 @@ import { usePurchaseMutation } from "../../services/api";
 import { useDispatch, useSelector } from "react-redux";
 import { RootReducer } from "../../store";
 import { CartClose, clear } from "../../store/reducers/cart";
+import * as Yup from "yup";
+import InputMask from "react-input-mask";
+import { miniSerializeError } from "@reduxjs/toolkit";
 
 type Props = {
   children: JSX.Element;
@@ -13,7 +16,7 @@ type Props = {
 
 const Checkout = ({ children }: Props) => {
   const [payment, setPayment] = useState(false);
-  const [purchase, { isSuccess, data }] = usePurchaseMutation();
+  const [purchase, { isSuccess, data, isError }] = usePurchaseMutation();
   const { items } = useSelector((state: RootReducer) => state.cart);
   const dispatch = useDispatch();
 
@@ -31,6 +34,34 @@ const Checkout = ({ children }: Props) => {
       houseNumber: "",
       complement: "",
     },
+    validationSchema: Yup.object({
+      cardDisplayName: Yup.string().required("O campo é obrigatório"),
+      cardNumber: Yup.string()
+        .matches(/^\d{4} \d{4} \d{4} \d{4}$/, "Número do cartão inválido")
+        .required("O campo é obrigatório"),
+      cardCode: Yup.string()
+        .matches(/^\d{3}$/, "O campo deve ter três caracteres")
+        .required("O campo é obrigatório"),
+      expiresMonth: Yup.string()
+        .matches(/^\d{2}$/, "O campo deve ter dois caracteres")
+        .required("O campo é obrigatório"),
+      expiresYear: Yup.string()
+        .matches(/^\d{2}$/, "O campo deve conter os dois últimos caracteres no ano em que o cartão expira")
+        .required("O campo é obrigatório"),
+      clientName: Yup.string().min(
+        4,
+        "O nome precisar ter no mínimo 4 caracteres"
+      ),
+      address: Yup.string().required("O campo é obrigatório"),
+      city: Yup.string().required("O campo é obrigatório"),
+      zipCode: Yup.string()
+        .matches(/^\d{5}-\d{3}$/, "CEP inválido")
+        .required("O campo é obrigatório"),
+      houseNumber: Yup.string()
+        .min(2, "O campo precisar ter de dois a quatro caracteres")
+        .max(4, "O campo precisar ter de dois a quatro caracteres")
+        .required("O campo é obrigatório"),
+    }),
     onSubmit: (value) => {
       purchase({
         products: items.map((item) => ({
@@ -62,6 +93,14 @@ const Checkout = ({ children }: Props) => {
     },
   });
 
+  const checkInputHasError = (fieldName: string) => {
+    const isTouched = fieldName in form.touched;
+    const isInvalid = fieldName in form.errors;
+    const hasError = isTouched && isInvalid;
+
+    return hasError;
+  };
+
   const close = () => {
     dispatch(CartClose());
     dispatch(clear());
@@ -70,7 +109,7 @@ const Checkout = ({ children }: Props) => {
   return (
     <div>
       <S.Container>
-        {isSuccess ? (
+        {isSuccess && data ? (
           <S.FinalizedPayment>
             <h4>Pedido realizado - {data.orderId}</h4>
             <p>
@@ -112,49 +151,71 @@ const Checkout = ({ children }: Props) => {
                     name="cardDisplayName"
                     value={form.values.cardDisplayName}
                     onChange={form.handleChange}
+                    onBlur={form.handleBlur}
+                    className={
+                      checkInputHasError("cardDisplayName") ? "error" : ""
+                    }
                   />
                 </div>
                 <div className="addresContainer">
                   <div>
                     <label htmlFor="cardNumber">Número do cartão</label>
-                    <input
+                    <InputMask
                       type="text"
                       id="cardNumber"
                       name="cardNumber"
                       value={form.values.cardNumber}
                       onChange={form.handleChange}
+                      mask="9999 9999 9999 9999"
+                      onBlur={form.handleBlur}
+                      className={
+                        checkInputHasError("cardNumber") ? "error" : ""
+                      }
                     />
                   </div>
                   <div>
                     <label htmlFor="cardCode">CVV</label>
-                    <input
+                    <InputMask
                       type="text"
                       id="cardCode"
                       name="cardCode"
                       value={form.values.cardCode}
                       onChange={form.handleChange}
+                      mask="999"
+                      onBlur={form.handleBlur}
+                      className={checkInputHasError("cardCode") ? "error" : ""}
                     />
                   </div>
                 </div>
                 <div className="addresContainer">
                   <div>
                     <label htmlFor="expiresMonth">Mês de vencimento</label>
-                    <input
+                    <InputMask
                       type="text"
                       id="expiresMonth"
                       name="expiresMonth"
                       value={form.values.expiresMonth}
                       onChange={form.handleChange}
+                      mask="99"
+                      onBlur={form.handleBlur}
+                      className={
+                        checkInputHasError("expiresMonth") ? "error" : ""
+                      }
                     />
                   </div>
                   <div>
                     <label htmlFor="expiresYear">Ano de vencimento</label>
-                    <input
+                    <InputMask
                       type="text"
                       id="expiresYear"
                       name="expiresYear"
                       value={form.values.expiresYear}
                       onChange={form.handleChange}
+                      mask="99"
+                      onBlur={form.handleBlur}
+                      className={
+                        checkInputHasError("expiresYear") ? "error" : ""
+                      }
                     />
                   </div>
                 </div>
@@ -186,6 +247,8 @@ const Checkout = ({ children }: Props) => {
                     name="clientName"
                     value={form.values.clientName}
                     onChange={form.handleChange}
+                    onBlur={form.handleBlur}
+                    className={checkInputHasError("clientName") ? "error" : ""}
                   />
                 </div>
                 <div>
@@ -196,6 +259,8 @@ const Checkout = ({ children }: Props) => {
                     name="address"
                     value={form.values.address}
                     onChange={form.handleChange}
+                    onBlur={form.handleBlur}
+                    className={checkInputHasError("address") ? "error" : ""}
                   />
                 </div>
                 <div>
@@ -206,27 +271,36 @@ const Checkout = ({ children }: Props) => {
                     name="city"
                     value={form.values.city}
                     onChange={form.handleChange}
+                    onBlur={form.handleBlur}
+                    className={checkInputHasError("city") ? "error" : ""}
                   />
                 </div>
                 <div className="addresContainer">
                   <div>
                     <label htmlFor="zipCode">CEP</label>
-                    <input
+                    <InputMask
                       type="text"
                       id="zipCode"
                       name="zipCode"
                       value={form.values.zipCode}
                       onChange={form.handleChange}
+                      onBlur={form.handleBlur}
+                      mask="99999-999"
+                      className={checkInputHasError("zipCode") ? "error" : ""}
                     />
                   </div>
                   <div>
                     <label htmlFor="houseNumber">Número</label>
                     <input
-                      type="text"
+                      type="number"
                       id="houseNumber"
                       name="houseNumber"
                       value={form.values.houseNumber}
                       onChange={form.handleChange}
+                      onBlur={form.handleBlur}
+                      className={
+                        checkInputHasError("houseNumber") ? "error" : ""
+                      }
                     />
                   </div>
                 </div>
@@ -238,6 +312,7 @@ const Checkout = ({ children }: Props) => {
                     name="complement"
                     value={form.values.complement}
                     onChange={form.handleChange}
+                    onBlur={form.handleBlur}
                   />
                 </div>
                 <div className="buttonContainer">
