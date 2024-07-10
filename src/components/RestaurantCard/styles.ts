@@ -1,6 +1,7 @@
-import styled from "styled-components";
-import { cores, dispositivo } from "../../styles";
 import { ButtonContainer, ButtonLink } from "../Button/styles";
+import { cores, dispositivo } from "../../styles";
+
+import styled from "styled-components";
 
 export const Card = styled.div`
   width: 472px;
@@ -12,7 +13,7 @@ export const Card = styled.div`
   margin-bottom: 48px;
   background-color: #fff;
   display: flex;
-  flex-direction: column;  
+  flex-direction: column;
 
   p {
     padding-bottom: 16px;
@@ -21,20 +22,20 @@ export const Card = styled.div`
 
   @media (max-width: ${dispositivo.tablet}) {
     width: 340px;
-    max-height: 420px;     
+    max-height: 420px;
   }
 `;
 
 export const CartContent = styled.div`
   display: flex;
   flex-direction: column;
-  flex-grow: 1; 
+  flex-grow: 1;
   padding: 8px;
-  
-  ${ButtonLink} {   
-    margin: 0; 
-    margin-top: auto; 
-    width: 82px;    
+
+  ${ButtonLink} {
+    margin: 0;
+    margin-top: auto;
+    width: 82px;
   }
 `;
 
@@ -48,7 +49,7 @@ export const InfosTag = styled.div`
   }
 `;
 
-export const Imagem = styled.img`
+export const Image = styled.img`
   width: 100%;
   height: 217px;
   object-fit: cover;

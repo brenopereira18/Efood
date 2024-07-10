@@ -1,7 +1,8 @@
-import efood from "../../assets/logo.png";
+import efood from "../../assets/soon.png";
 import instagram from "../../assets/instagram.png";
 import facebook from "../../assets/facebook.png";
 import twitter from "../../assets/twitter.png";
+
 import { FooterContainer } from "./styles";
 
 const Footer = () => (

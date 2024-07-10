@@ -1,11 +1,13 @@
-import Button from "../Button";
-import { Card, Fechar, Modal, ModalContainer, ModalContent } from "./styles";
-import fechar from "../../assets/fechar.png";
-import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { CartOpen, add } from "../../store/reducers/cart";
-import { menuItem } from "../../pages/Home";
+import { useState } from "react";
+
+import Button from "../Button";
 import { formataPreco } from "../../utils";
+import { CartOpen, add } from "../../store/reducers/cart";
+
+import fechar from "../../assets/fechar.png";
+
+import * as S from "./styles";
 
 const FoodCard = ({ nome, descricao, foto, porcao, preco, id }: menuItem) => {
   const dispatch = useDispatch();
@@ -28,7 +30,7 @@ const FoodCard = ({ nome, descricao, foto, porcao, preco, id }: menuItem) => {
 
   return (
     <>
-      <Card key={id} onClick={() => setModal(true)}>
+      <S.Card key={id} onClick={() => setModal(true)}>
         <img src={foto} />
         <div>
           <h6>{nome}</h6>
@@ -37,13 +39,13 @@ const FoodCard = ({ nome, descricao, foto, porcao, preco, id }: menuItem) => {
             Mais detalhes
           </Button>
         </div>
-      </Card>
-      <Modal className={modal ? "visivel" : ""}>
-        <ModalContainer>
-          <Fechar>
+      </S.Card>
+      <S.Modal className={modal ? "visivel" : ""}>
+        <S.ModalContainer>
+          <S.Close>
             <img src={fechar} onClick={() => setModal(false)} />
-          </Fechar>
-          <ModalContent>
+          </S.Close>
+          <S.ModalContent>
             <img src={foto} />
             <div>
               <h4>{nome}</h4>
@@ -55,9 +57,9 @@ const FoodCard = ({ nome, descricao, foto, porcao, preco, id }: menuItem) => {
                 </Button>
               </div>
             </div>
-          </ModalContent>
-        </ModalContainer>
-      </Modal>
+          </S.ModalContent>
+        </S.ModalContainer>
+      </S.Modal>
     </>
   );
 };

@@ -1,17 +1,16 @@
 import { BannerContainer } from "./styles";
-import { Restaurant } from "../../pages/Home";
 
 type Props = {
-  restaurante: Restaurant
+  restaurant: Restaurant
 }
 
-const Banner = ({restaurante}: Props) => {
+const Banner = ({restaurant}: Props) => {
   
   return (
-    <BannerContainer style={{ backgroundImage: `url(${restaurante.capa})` }}>
+    <BannerContainer style={{ backgroundImage: `url(${restaurant.capa})` }}>
       <div className="container">
-        <p>{restaurante.tipo}</p>
-        <h4>{restaurante.titulo}</h4>
+        <p>{restaurant.tipo}</p>
+        <h4>{restaurant.titulo}</h4>
       </div>
     </BannerContainer>
   );

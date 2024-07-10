@@ -1,21 +1,17 @@
-import lixeira from "../../assets/lixeira.png";
-import {
-  CartContainer,
-  CartItem,
-  Overlay,
-  SideBar,
-  ToExclude,
-  TotalPrice,
-} from "./styles";
-import Button from "../../components/Button";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
+import Checkout from "../Checkout";
+import Button from "../../components/Button";
+import lixeira from "../../assets/lixeira.png";
+
 import { RootReducer } from "../../store";
 import { CartClose, remove } from "../../store/reducers/cart";
 import { formataPreco, totalPrice } from "../../utils/index";
-import { useState } from "react";
-import Checkout from "../Checkout";
 
-const Carrinho = () => {
+import * as S from "./styles";
+
+const Cart = () => {
   const { isOpen, items } = useSelector((state: RootReducer) => state.cart);
   const dispatch = useDispatch();
   const [continueOrdering, setContinueOrdering] = useState(false);
@@ -28,12 +24,10 @@ const Carrinho = () => {
     dispatch(remove(id));
   };
 
-  
-
   return (
-    <CartContainer className={isOpen ? "is-open" : ""}>
-      <Overlay onClick={close} />
-      <SideBar>
+    <S.CartContainer className={isOpen ? "is-open" : ""}>
+      <S.Overlay onClick={close} />
+      <S.SideBar>
         {continueOrdering ? (
           <Checkout>
             <Button
@@ -48,23 +42,23 @@ const Carrinho = () => {
           <>
             <ul>
               {items.map((item) => (
-                <CartItem>
+                <S.CartItem>
                   <img src={item.foto} />
                   <div>
                     <h3>{item.nome}</h3>
                     <p>{formataPreco(item.preco)}</p>
                   </div>
-                  <ToExclude
+                  <S.ToExclude
                     onClick={() => removeItem(item.id)}
                     src={lixeira}
                   />
-                </CartItem>
+                </S.CartItem>
               ))}
             </ul>
-            <TotalPrice>
+            <S.TotalPrice>
               <p>Valor total</p>
               <p>{formataPreco(totalPrice(items))}</p>
-            </TotalPrice>
+            </S.TotalPrice>
             <Button
               type="link"
               backgroundColor="begeClaro"
@@ -74,9 +68,9 @@ const Carrinho = () => {
             </Button>
           </>
         )}
-      </SideBar>
-    </CartContainer>
+      </S.SideBar>
+    </S.CartContainer>
   );
 };
 
-export default Carrinho;
+export default Cart;

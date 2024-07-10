@@ -1,18 +1,18 @@
 import FoodCard from "../../components/FoodCard";
+
 import { CardContainer, SectionFoods } from "./styles";
-import { Restaurant } from "../../pages/Home";
 
 type Props = {
-  restaurante: Restaurant;
+  restaurantMenu: Restaurant;
 };
 
-const FoodList = ({ restaurante }: Props) => {
+const FoodList = ({ restaurantMenu }: Props) => {
   return (
     <>
       <SectionFoods>
         <div className="container">
           <CardContainer>
-            {restaurante.cardapio.map((rest) => (
+            {restaurantMenu.cardapio.map((rest) => (
               <div key={rest.id}>
                 <FoodCard
                   nome={rest.nome}

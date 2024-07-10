@@ -1,6 +1,8 @@
-import estrela from "../../assets/estrela.png";
-import * as S from "./styles";
 import Button from "../Button";
+
+import estrela from "../../assets/estrela.png";
+
+import * as S from "./styles";
 
 type Props = {
   title: string;
@@ -9,7 +11,7 @@ type Props = {
   evaluation: number;
   typeFood: string;
   id: number;
-  destacado: boolean
+  outstanding: boolean;
 };
 
 const RestaurantCard = ({
@@ -19,12 +21,12 @@ const RestaurantCard = ({
   evaluation,
   typeFood,
   id,
-  destacado
+  outstanding,
 }: Props) => (
   <S.Card>
-    <S.Imagem src={image} alt="Restaurante Japonês" />
+    <S.Image src={image} alt="Restaurante Japonês" />
     <S.InfosTag>
-      {(destacado) ? (
+      {outstanding ? (
         <>
           <Button type="tag">Destaque da semana</Button>
           <Button type="tag">{typeFood}</Button>

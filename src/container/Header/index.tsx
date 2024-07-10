@@ -1,10 +1,13 @@
-import logo from "../../assets/logo.png";
-import fundoHeader from "../../assets/fundoHeader.png";
-import { Carrinho, Container, Logo, RestaurantHeader } from "./styles";
-import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+
 import { RootReducer } from "../../store";
 import { CartOpen } from "../../store/reducers/cart";
+
+import Efood from "../../assets/soon.png";
+import BackgroundHeader from "../../assets/backgroundHeader.png";
+
+import * as S from "./styles";
 
 type Props = {
   thereIsABanner: boolean;
@@ -21,29 +24,33 @@ const Header = ({ thereIsABanner }: Props) => {
   if (thereIsABanner) {
     return (
       <>
-        <RestaurantHeader style={{ backgroundImage: `url(${fundoHeader})` }}>
+        <S.RestaurantHeader
+          style={{ backgroundImage: `url(${BackgroundHeader})` }}
+        >
           <div className="container">
             <p>Restaurantes</p>
             <Link to="/">
-              <Logo src={logo} alt="Efood" />
+              <S.Soon src={Efood} alt="Efood" />
             </Link>
-            <Carrinho onClick={open}>{items.length} produto(s) no carrinho</Carrinho>
+            <S.Cart onClick={open}>
+              {items.length} produto(s) no carrinho
+            </S.Cart>
           </div>
-        </RestaurantHeader>
+        </S.RestaurantHeader>
       </>
     );
   }
 
   return (
-    <Container style={{ backgroundImage: `url(${fundoHeader})` }}>
+    <S.Container style={{ backgroundImage: `url(${BackgroundHeader})` }}>
       <div>
-        <Logo src={logo} alt="Efood" />
+        <S.Soon src={Efood} alt="Efood" />
         <p>
           Viva experiências gastronômicas <br />
           no conforto da sua casa
         </p>
       </div>
-    </Container>
+    </S.Container>
   );
 };
 

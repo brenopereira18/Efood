@@ -1,14 +1,17 @@
 import { useState } from "react";
-import Button from "../../components/Button";
-import * as S from "./styles";
 import { useFormik } from "formik";
-import { usePurchaseMutation } from "../../services/api";
 import { useDispatch, useSelector } from "react-redux";
+import InputMask from "react-input-mask";
+import * as Yup from "yup";
+
+import Button from "../../components/Button";
+
+import { usePurchaseMutation } from "../../services/api";
 import { RootReducer } from "../../store";
 import { CartClose, clear } from "../../store/reducers/cart";
-import * as Yup from "yup";
-import InputMask from "react-input-mask";
 import { formataPreco, totalPrice } from "../../utils";
+
+import * as S from "./styles";
 
 type Props = {
   children: JSX.Element;

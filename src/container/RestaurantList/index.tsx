@@ -1,25 +1,25 @@
 import RestaurantCard from "../../components/RestaurantCard";
-import { Restaurant } from "../../pages/Home";
+
 import { ContainerCard, SectionRestaurants } from "./styles";
 
 type Props = {
-  restaurantes: Restaurant[];
+  restaurants: Restaurant[];
 };
 
-const RestaurantList = ({ restaurantes }: Props) => (
+const RestaurantList = ({ restaurants }: Props) => (
   <SectionRestaurants>
     <div className="container">
       <ContainerCard>
-        {restaurantes.map((restaurante) => (
-          <li key={restaurante.id}>
+        {restaurants.map((restaurant) => (
+          <li key={restaurant.id}>
             <RestaurantCard
-              id={restaurante.id}
-              title={restaurante.titulo}
-              image={restaurante.capa}
-              description={restaurante.descricao}
-              evaluation={restaurante.avaliacao}
-              typeFood={restaurante.tipo}
-              destacado={restaurante.destacado}
+              id={restaurant.id}
+              title={restaurant.titulo}
+              image={restaurant.capa}
+              description={restaurant.descricao}
+              evaluation={restaurant.avaliacao}
+              typeFood={restaurant.tipo}
+              outstanding={restaurant.destacado}
             />
           </li>
         ))}

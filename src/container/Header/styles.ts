@@ -25,7 +25,7 @@ export const Container = styled.header`
   }
 `;
 
-export const Logo = styled.img`
+export const Soon = styled.img`
   margin-top: 64px;
 `;
 
@@ -50,7 +50,7 @@ export const RestaurantHeader = styled.div`
     margin-top: 82px;
   }
 
-  ${Logo} {
+  ${Soon} {
     @media (max-width: ${dispositivo.mobile}) {
       margin-top: 0px;
       margin-bottom: 80px;
@@ -58,7 +58,7 @@ export const RestaurantHeader = styled.div`
   }
 `;
 
-export const Carrinho = styled.p`
+export const Cart = styled.p`
   color: ${cores.laranja};
   font-size: 18px;
   font-weight: bold;

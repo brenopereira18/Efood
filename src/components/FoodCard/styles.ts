@@ -73,11 +73,11 @@ export const ModalContainer = styled.div`
   }
 
   @media (max-width: ${dispositivo.mobile}) {
-    height: 460px;    
+    height: 460px;
   }
 `;
 
-export const Fechar = styled.div`
+export const Close = styled.div`
   width: 16px;
   height: 16px;
   position: absolute;
@@ -97,7 +97,7 @@ export const ModalContent = styled.div`
   gap: 24px;
 
   @media (max-width: ${dispositivo.mobile}) {
-    flex-direction: column;    
+    flex-direction: column;
   }
 
   img {
@@ -107,10 +107,9 @@ export const ModalContent = styled.div`
 
     @media (max-width: ${dispositivo.mobile}) {
       height: 160px;
-      width: 300px;  
+      width: 300px;
     }
   }
-  
 
   h4 {
     margin-bottom: 16px;
