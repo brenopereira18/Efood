@@ -5,8 +5,6 @@ import styled from "styled-components";
 
 export const Card = styled.div`
   width: 472px;
-  max-height: 390px;
-  height: 100%;
   color: ${colors.orange};
   border: 1px solid ${colors.orange};
   position: relative;
@@ -22,7 +20,6 @@ export const Card = styled.div`
 
   @media (max-width: ${breakpoints.tablet}) {
     width: 340px;
-    max-height: 420px;
   }
 `;
 
@@ -30,11 +27,11 @@ export const CartContent = styled.div`
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  justify-content: space-between;
   padding: 8px;
 
   ${ButtonLink} {
     margin: 0;
-    margin-top: auto;
     width: 82px;
   }
 `;

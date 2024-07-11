@@ -73,7 +73,8 @@ export const ModalContainer = styled.div`
   }
 
   @media (max-width: ${breakpoints.mobile}) {
-    height: 460px;
+    max-height: 480px;
+    height: 100%;    
   }
 `;
 
@@ -87,8 +88,7 @@ export const Close = styled.div`
 
   img {
     width: 16px;
-    height: 16px;
-    cursor: pointer;
+    height: 16px;    
   }
 `;
 
@@ -107,7 +107,7 @@ export const ModalContent = styled.div`
 
     @media (max-width: ${breakpoints.mobile}) {
       height: 160px;
-      width: 300px;
+      width: 100%;
     }
   }
 
