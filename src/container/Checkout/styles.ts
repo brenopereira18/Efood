@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { cores } from "../../styles";
+import { colors } from "../../styles";
 import { ButtonLink } from "../../components/Button/styles";
 
 type InputGroupProps = {
@@ -7,16 +7,12 @@ type InputGroupProps = {
 };
 
 export const Container = styled.div`
-  color: ${cores.bege};
+  color: ${colors.beige};
 
   h4 {
     font-size: 16px;
     line-height: 18px;
     margin-bottom: 16px;
-  }
-
-  ${ButtonLink} {
-    margin-bottom: 8px;
   }
 `;
 
@@ -37,13 +33,13 @@ export const Form = styled.form`
 
   input {
     width: 100%;
-    background-color: ${cores.bege};
+    background-color: ${colors.beige};
     height: 32px;
-    border: 1px solid ${cores.bege};
+    border: 1px solid ${colors.beige};
     padding: 16px 8px;
     font-size: 14px;
     font-weight: bold;
-    color: ${cores.gray};
+    color: ${colors.gray};
 
     &.error {
       border: 2px solid red;
@@ -52,6 +48,10 @@ export const Form = styled.form`
 
   .buttonContainer {
     margin-top: 24px;
+
+    ${ButtonLink} {
+      margin-bottom: 8px;
+    }
   }
 
   .addresContainer {
@@ -59,7 +59,7 @@ export const Form = styled.form`
     flex-direction: row;
     column-gap: 34px;
 
-    div {      
+    div {
       width: 100%;
     }
   }

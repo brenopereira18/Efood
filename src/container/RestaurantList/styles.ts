@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import { cores, dispositivo } from "../../styles";
+import { colors, breakpoints } from "../../styles";
 
 export const SectionRestaurants = styled.section`
-  background-color: ${cores.begeClaro};
-  padding: 80px 0;  
+  background-color: ${colors.lightBeige};
+  padding: 80px 0;
 `;
 
 export const ContainerCard = styled.ul`
@@ -13,13 +13,12 @@ export const ContainerCard = styled.ul`
   text-decoration: none;
   list-style: none;
 
-  @media (max-width: ${dispositivo.tablet}) {
-    column-gap: 40px;      
+  @media (max-width: ${breakpoints.tablet}) {
+    column-gap: 40px;
   }
 
-  @media (max-width: ${dispositivo.mobile}) {
-    grid-template-columns: 1fr; 
-    justify-items: center;     
+  @media (max-width: ${breakpoints.mobile}) {
+    grid-template-columns: 1fr;
+    justify-items: center;
   }
-`
-
+`;

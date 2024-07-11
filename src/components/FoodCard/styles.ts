@@ -1,12 +1,12 @@
 import { styled } from "styled-components";
-import { cores, dispositivo } from "../../styles";
+import { colors, breakpoints } from "../../styles";
 import { ButtonLink } from "../Button/styles";
 
 export const Card = styled.div`
   width: 320px;
   height: 100%;
-  background-color: ${cores.laranja};
-  color: ${cores.begeClaro};
+  background-color: ${colors.orange};
+  color: ${colors.lightBeige};
   padding: 8px;
   display: flex;
   flex-direction: column;
@@ -65,14 +65,14 @@ export const ModalContainer = styled.div`
   height: 344px;
   padding: 32px;
   color: #fff;
-  background-color: ${cores.laranja};
+  background-color: ${colors.orange};
   gap: 24px;
 
-  @media (max-width: ${dispositivo.tablet}) {
+  @media (max-width: ${breakpoints.tablet}) {
     max-width: 90%;
   }
 
-  @media (max-width: ${dispositivo.mobile}) {
+  @media (max-width: ${breakpoints.mobile}) {
     height: 460px;
   }
 `;
@@ -96,7 +96,7 @@ export const ModalContent = styled.div`
   display: flex;
   gap: 24px;
 
-  @media (max-width: ${dispositivo.mobile}) {
+  @media (max-width: ${breakpoints.mobile}) {
     flex-direction: column;
   }
 
@@ -105,7 +105,7 @@ export const ModalContent = styled.div`
     height: 280px;
     object-fit: cover;
 
-    @media (max-width: ${dispositivo.mobile}) {
+    @media (max-width: ${breakpoints.mobile}) {
       height: 160px;
       width: 300px;
     }

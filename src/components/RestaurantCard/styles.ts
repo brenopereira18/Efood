@@ -1,5 +1,5 @@
 import { ButtonContainer, ButtonLink } from "../Button/styles";
-import { cores, dispositivo } from "../../styles";
+import { colors, breakpoints } from "../../styles";
 
 import styled from "styled-components";
 
@@ -7,8 +7,8 @@ export const Card = styled.div`
   width: 472px;
   max-height: 390px;
   height: 100%;
-  color: ${cores.laranja};
-  border: 1px solid ${cores.laranja};
+  color: ${colors.orange};
+  border: 1px solid ${colors.orange};
   position: relative;
   margin-bottom: 48px;
   background-color: #fff;
@@ -20,7 +20,7 @@ export const Card = styled.div`
     font-size: 14px;
   }
 
-  @media (max-width: ${dispositivo.tablet}) {
+  @media (max-width: ${breakpoints.tablet}) {
     width: 340px;
     max-height: 420px;
   }

@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import { cores } from "../../styles";
+import { colors } from "../../styles";
 
 export const FooterContainer = styled.div`
-  background-color: ${cores.bege};
+  background-color: ${colors.beige};
   text-align: center;
   padding: 40px 0;
-  color: ${cores.laranja};
+  color: ${colors.orange};
 
   div {
     padding: 32px 0 60px 0;

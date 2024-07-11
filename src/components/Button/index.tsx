@@ -5,7 +5,7 @@ export type Props = {
   children: any;
   to?: string;
   size?: "small" | "big";
-  backgroundColor?: "laranja" | "begeClaro";
+  backgroundColor?: "orange" | "lightBeige";
   onClick?: () => void;
 };
 
@@ -14,7 +14,7 @@ const Button = ({
   children,
   to,
   size = "small",
-  backgroundColor = "laranja",
+  backgroundColor = "orange",
   onClick,
 }: Props) => {
   if (type === "tag") {

@@ -137,7 +137,7 @@ const Checkout = ({ children }: Props) => {
             </p>
             <Button
               type="link"
-              backgroundColor="begeClaro"
+              backgroundColor="lightBeige"
               to="/"
               onClick={close}
             >
@@ -231,14 +231,14 @@ const Checkout = ({ children }: Props) => {
                 <div className="buttonContainer">
                   <Button
                     type="link"
-                    backgroundColor="begeClaro"
+                    backgroundColor="lightBeige"
                     onClick={form.handleSubmit}
                   >
                     Finalizar pagamento
                   </Button>
                   <Button
                     type="link"
-                    backgroundColor="begeClaro"
+                    backgroundColor="lightBeige"
                     onClick={() => setPayment(false)}
                   >
                     Voltar para a edição de endereço
@@ -327,7 +327,7 @@ const Checkout = ({ children }: Props) => {
                 <div className="buttonContainer">
                   <Button
                     type="link"
-                    backgroundColor="begeClaro"
+                    backgroundColor="lightBeige"
                     onClick={() => setPayment(true)}
                   >
                     Continuar com o pagamento

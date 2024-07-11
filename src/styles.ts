@@ -1,13 +1,13 @@
 import { createGlobalStyle } from "styled-components";
 
-export const cores = {
-  bege: "#FFEBD9",
-  begeClaro: "#FFF8F2",
-  laranja: "#E66767",
+export const colors = {
+  beige: "#FFEBD9",
+  lightBeige: "#FFF8F2",
+  orange: "#E66767",
   gray: "#4B4B4B",
 };
 
-export const dispositivo = {
+export const breakpoints = {
   tablet: "1023px",
   mobile: "767px",
 };
@@ -26,7 +26,7 @@ export const GlobalCss = createGlobalStyle`
       width: 100%;
       margin: 0 auto;
 
-      @media (max-width: ${dispositivo.tablet}) {
+      @media (max-width: ${breakpoints.tablet}) {
         max-width: 90%;
       }     
     }

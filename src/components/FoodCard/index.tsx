@@ -35,7 +35,7 @@ const FoodCard = ({ nome, descricao, foto, porcao, preco, id }: menuItem) => {
         <div>
           <h6>{nome}</h6>
           <p>{descricao}</p>
-          <Button type="link" size="big" backgroundColor="begeClaro">
+          <Button type="link" size="big" backgroundColor="lightBeige">
             Mais detalhes
           </Button>
         </div>
@@ -52,7 +52,7 @@ const FoodCard = ({ nome, descricao, foto, porcao, preco, id }: menuItem) => {
               <p>{descricao}</p>
               <p>Serve: {porcao}</p>
               <div onClick={handleClick}>
-                <Button type="link" backgroundColor="begeClaro" size="small">
+                <Button type="link" backgroundColor="lightBeige" size="small">
                   Adicionar ao carrinho - {formataPreco(preco)}
                 </Button>
               </div>

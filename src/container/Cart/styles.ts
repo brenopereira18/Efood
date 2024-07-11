@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { cores, dispositivo } from "../../styles";
+import { colors, breakpoints } from "../../styles";
 import { ButtonLink } from "../../components/Button/styles";
 
 export const CartContainer = styled.div`
@@ -28,12 +28,12 @@ export const Overlay = styled.div`
 
 export const SideBar = styled.div`
   width: 360px;
-  background-color: ${cores.laranja};
+  background-color: ${colors.orange};
   z-index: 1;
   padding: 32px 8px 8px 8px;
 
-  @media (max-width: ${dispositivo.mobile}) {
-    width: 320px;    
+  @media (max-width: ${breakpoints.mobile}) {
+    width: 320px;
   }
 
   ${ButtonLink} {
@@ -47,8 +47,8 @@ export const CartItem = styled.div`
   max-width: 344px;
   width: 100%;
   height: 100px;
-  background-color: ${cores.bege};
-  color: ${cores.laranja};
+  background-color: ${colors.beige};
+  color: ${colors.orange};
   padding: 8px;
   display: flex;
   margin-bottom: 12px;
@@ -86,7 +86,7 @@ export const TotalPrice = styled.div`
   justify-content: space-between;
   margin-top: 40px;
   margin-bottom: 16px;
-  color: ${cores.bege};
+  color: ${colors.beige};
   font-size: 14px;
   font-weight: bold;
   line-height: 16px;

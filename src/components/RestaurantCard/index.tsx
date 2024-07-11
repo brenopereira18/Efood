@@ -45,7 +45,7 @@ const RestaurantCard = ({
       </S.InfosContainer>
       <p>{description}</p>
       <Button
-        backgroundColor="laranja"
+        backgroundColor="orange"
         to={`/restaurant/${id}`}
         type="link"
         children="Saiba mais"

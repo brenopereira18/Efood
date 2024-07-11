@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { cores, dispositivo } from "../../styles";
+import { colors, breakpoints } from "../../styles";
 
 export const Container = styled.header`
   height: 360px;
@@ -15,10 +15,10 @@ export const Container = styled.header`
     font-size: 36px;
     font-weight: bold;
     line-height: 42.19px;
-    color: ${cores.laranja};
+    color: ${colors.orange};
     margin-top: 120px;
 
-    @media (max-width: ${dispositivo.mobile}) {
+    @media (max-width: ${breakpoints.mobile}) {
       margin: 80px 0 40px;
       font-size: 32px;
     }
@@ -38,20 +38,20 @@ export const RestaurantHeader = styled.div`
     justify-content: space-between;
     align-items: center;
 
-    @media (max-width: ${dispositivo.mobile}) {
+    @media (max-width: ${breakpoints.mobile}) {
       padding-top: 20px;
     }
   }
 
   p {
-    color: ${cores.laranja};
+    color: ${colors.orange};
     font-size: 18px;
     font-weight: bold;
     margin-top: 82px;
   }
 
   ${Soon} {
-    @media (max-width: ${dispositivo.mobile}) {
+    @media (max-width: ${breakpoints.mobile}) {
       margin-top: 0px;
       margin-bottom: 80px;
     }
@@ -59,7 +59,7 @@ export const RestaurantHeader = styled.div`
 `;
 
 export const Cart = styled.p`
-  color: ${cores.laranja};
+  color: ${colors.orange};
   font-size: 18px;
   font-weight: bold;
   margin-top: 82px;

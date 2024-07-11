@@ -32,7 +32,7 @@ const Cart = () => {
           <Checkout>
             <Button
               type="link"
-              backgroundColor="begeClaro"
+              backgroundColor="lightBeige"
               onClick={() => setContinueOrdering(false)}
             >
               Voltar para o carrinho
@@ -61,7 +61,7 @@ const Cart = () => {
             </S.TotalPrice>
             <Button
               type="link"
-              backgroundColor="begeClaro"
+              backgroundColor="lightBeige"
               onClick={() => setContinueOrdering(true)}
             >
               Continuar com a entrega

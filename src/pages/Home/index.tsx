@@ -1,3 +1,4 @@
+import Loader from "../../components/Loader";
 import Header from "../../container/Header";
 import RestaurantList from "../../container/RestaurantList";
 
@@ -14,7 +15,7 @@ const Home = () => {
       </>
     );
   }
-  return <h4>Carregando...</h4>;
+  return <Loader />
 };
 
 export default Home;
