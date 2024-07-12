@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import Checkout from "../Checkout";
@@ -23,6 +23,12 @@ const Cart = () => {
   const removeItem = (id: number) => {
     dispatch(remove(id));
   };
+
+  useEffect(() => {
+    if (items.length === 0) {
+      setContinueOrdering(false);
+    }
+  }, [items]);
 
   return (
     <S.CartContainer className={isOpen ? "is-open" : ""}>

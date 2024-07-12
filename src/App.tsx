@@ -22,8 +22,8 @@ function App() {
       <BrowserRouter>
         <GlobalCss />
         <Rotas />
-        <Footer />  
-        <Cart />      
+        <Footer />
+        <Cart />
       </BrowserRouter>
     </Provider>
   );

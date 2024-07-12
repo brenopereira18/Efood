@@ -19,7 +19,8 @@ type Props = {
 
 const Checkout = ({ children }: Props) => {
   const [payment, setPayment] = useState(false);
-  const [purchase, { isSuccess, data, isError }] = usePurchaseMutation();
+  const [showFinalized, setShowFinalized] = useState(false);
+  const [purchase, { isSuccess, data }] = usePurchaseMutation();
   const { items } = useSelector((state: RootReducer) => state.cart);
   const dispatch = useDispatch();
 
@@ -95,6 +96,8 @@ const Checkout = ({ children }: Props) => {
             },
           },
         },
+      }).then(() => {
+        setShowFinalized(true);
       });
     },
   });
@@ -110,12 +113,14 @@ const Checkout = ({ children }: Props) => {
   const close = () => {
     dispatch(CartClose());
     dispatch(clear());
+    setShowFinalized(false);
+    setPayment(false)
   };
 
   return (
     <div>
       <S.Container>
-        {isSuccess && data ? (
+        {isSuccess && data && showFinalized ? (
           <S.FinalizedPayment>
             <h4>Pedido realizado - {data.orderId}</h4>
             <p>
